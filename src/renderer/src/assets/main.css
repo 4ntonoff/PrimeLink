@@ -1,0 +1,21 @@
+@import "./base.css";
+
+body {
+    display: flex;
+    overflow: hidden;
+    background-image: url("./wavy-lines.svg");
+    background-size: cover;
+    user-select: none;
+}
+
+.draggable-zone {
+    position: fixed;
+    -webkit-app-region: drag;
+    height: 40px;
+    width: 100%;
+    background-color: transparent;
+}
+
+#root {
+    width: 100%;
+}
