@@ -1,4 +1,4 @@
-# primelink
+# <p align="center">PrimeLink</p>
 
 An Electron application with React and TypeScript
 
