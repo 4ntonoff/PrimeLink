@@ -1,0 +1,61 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           Int          @id @default(autoincrement())
+  createdAt    DateTime     @default(now())
+  name         String       @unique
+  email        String?      @unique
+  phone        String?      @unique
+  passwordHash String       @unique
+  avatarUrl    String?
+  comment      Comment[]
+  posts        Post[]
+  profile      UserProfile?
+
+  @@map("users")
+}
+
+model UserProfile {
+  id     Int    @id @default(autoincrement())
+  bio    String
+  userId Int    @unique
+  user   User   @relation(fields: [userId], references: [id])
+
+  @@map("users_profile")
+}
+
+model Post {
+  id            Int       @id @default(autoincrement())
+  title         String    @db.VarChar(255)
+  description   String    @db.VarChar(255)
+  commentsCount Int
+  viewsCount    Int
+  imageUrl      String?
+  videoUrl      String?
+  userId        Int
+  comment       Comment[]
+  user          User      @relation(fields: [userId], references: [id])
+
+  @@index([userId], map: "posts_userId_fkey")
+  @@map("posts")
+}
+
+model Comment {
+  id     Int    @id @default(autoincrement())
+  text   String
+  userId Int
+  postId Int
+  post   Post   @relation(fields: [postId], references: [id])
+  user   User   @relation(fields: [userId], references: [id])
+
+  @@unique([userId, postId])
+  @@index([postId], map: "comments_postId_fkey")
+  @@map("comments")
+}
