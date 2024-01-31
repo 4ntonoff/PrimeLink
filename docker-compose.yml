@@ -15,16 +15,16 @@ services:
             host: mysql-db
             port: 3306
             user: root
-            password: pHih5/F[(0:9
+            password: $mypass
             migrations: true
   mysql-db:
     image: mysql:8.0
     restart: unless-stopped
     environment:
       MYSQL_USER: root
-      MYSQL_PASSWORD: pHih5/F[(0:9
-      MYSQL_ROOT_PASSWORD: pHih5/F[(0:9
-      MYSQL_DATABASE: primelink_database
+      MYSQL_PASSWORD: $mypass
+      MYSQL_ROOT_PASSWORD: $myrootpass
+      MYSQL_DATABASE: $mydatabase
     volumes: 
       - mysql:/var/lib/mysql
     
