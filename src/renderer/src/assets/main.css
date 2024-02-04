@@ -2,24 +2,51 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@font-face {
+  font-family: Syncrone;
+  src: url(./fonts/Syncrone-Oblique.ttf);
+}
+@font-face {
+  font-family: Involve-Med;
+  src: url(./fonts/Involve-Medium.ttf);
+}
+@font-face {
+  font-family: Involve-Bold;
+  src: url(./fonts/Involve-Bold.ttf);
+}
+@font-face {
+  font-family: Lineyka;
+  src: url(./fonts/Lineyka.ttf);
+}
 
 body {
   display: flex;
   overflow: hidden;
-  background-image: url("./wavy-lines.svg");
   background-size: cover;
   background-position: center center;
   user-select: none;
 }
 
 .draggable-zone {
-  position: fixed;
   -webkit-app-region: drag;
-  height: 40px;
-  width: 100%;
-  background-color: transparent;
 }
 
 #root {
   width: 100%;
+}
+
+.logo-text {
+  font-family: Syncrone;
+}
+
+.heading {
+  font-family: Involve-Med;
+}
+
+.heading-bold {
+  font-family: Involve-Bold;
+}
+
+.text {
+  font-family: Lineyka;
 }
