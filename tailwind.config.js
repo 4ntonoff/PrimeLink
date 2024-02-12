@@ -18,7 +18,7 @@ module.exports = {
         "register-bg-5": "url('/src/assets/images/bg-5.jpg')",
       },
       colors: {
-        backround: "#1B1B1F",
+        background: "#1B1B1F",
         "primary-blue": "#01bbca",
       },
     },
