@@ -26,45 +26,59 @@
   src: url(./fonts/Lineyka.ttf);
 }
 
-/* TODO: Change animation for login */
 @keyframes fade-in {
-  from {
+  0% {
     opacity: 0;
+  }
+  67% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
 
 @keyframes fade-out {
-  to {
+  0% {
+    opacity: 1;
+  }
+  15% {
+    opacity: 0;
+  }
+  100% {
     opacity: 0;
   }
 }
 
 @keyframes slide-from-right {
   from {
-    transform: translateX(500px);
+    transform: translateX(384px);
   }
 }
 
 @keyframes slide-to-left {
   to {
-    transform: translateX(-500px);
+    transform: translateX(-384px);
   }
 }
 
 .login-content {
-  view-transition-name: content;
+  view-transition-name: login-content;
+  overflow: hidden;
+  max-height: none; /* Позволяет блоку расширяться до неограниченной высоты */
+  transition: max-height 3s ease;
 }
 
 ::view-transition-old(login-content) {
   animation:
-    5000ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
-    5000ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-left;
+    600ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
+    600ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-left;
 }
 
 ::view-transition-new(login-content) {
   animation:
-    5000ms cubic-bezier(0, 0, 0.2, 1) 90ms both fade-in,
-    5000ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-right;
+    300ms cubic-bezier(0, 0, 0.2, 1) both fade-in,
+    300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-right;
 }
 
 *,
