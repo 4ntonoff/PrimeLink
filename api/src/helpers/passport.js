@@ -2,12 +2,13 @@ const { PrismaClient } = require('@prisma/client');
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const prisma = new PrismaClient();
+const {CLIENT_ID, CLIENT_SECRET, CALLBACK_URL} = process.env
 require('dotenv').config();
 
 passport.use(new GoogleStrategy({
-    clientID: "137735957941-6epkm3irrgghufltmtrcjmhd2dprl17p.apps.googleusercontent.com",
-    clientSecret: "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",
-    callbackURL: "http://localhost:8080/auth/google/callback"
+    clientID: CLIENT_ID,
+    clientSecret: CLIENT_SECRET,
+    callbackURL: CALLBACK_URL
 },
     async function (accessToken, refreshToken, profile, done) {
         try {
