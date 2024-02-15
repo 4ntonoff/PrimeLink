@@ -15,15 +15,20 @@ services:
             host: mysql-db
             port: 3306
             user: root
-            password: $MY_PASS
+            password: $MYSQL_PASSWORD
             migrations: true
+            connectionPool:
+              max: 20  # Adjust the pool size based on your needs
+              idleTimeout: 30000  # 30 seconds in milliseconds
+            
+
   mysql-db:
-    image: mysql:8.0
+    image: mysql:latest
     restart: always
+    command: --transaction-isolation=READ-COMMITTED
     env_file:
       - .env
     volumes: 
       - mysql:/var/lib/mysql
-    
 volumes:
   mysql: ~

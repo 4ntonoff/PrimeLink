@@ -10,7 +10,7 @@ const checkAuth = (req,res,next) => {
         try {
             const decoded = jwt.verify(token,secret)
 
-            req.userId = decoded._id
+            req.userId = decoded.userId
             next()
         } catch (error) {
             return res.status(403).json({

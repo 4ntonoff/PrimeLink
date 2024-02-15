@@ -8,16 +8,21 @@ datasource db {
 }
 
 model User {
-  id           Int          @id @default(autoincrement())
-  createdAt    DateTime     @default(now())
-  name         String       @unique
-  email        String?      @unique
-  phone        String?      @unique
-  passwordHash String       @unique
-  avatarUrl    String?
-  comment      Comment[]
-  posts        Post[]
-  profile      UserProfile?
+  id                 Int          @id @default(autoincrement())
+  createdAt          DateTime     @default(now())
+  name               String       @unique
+  email              String       @unique
+  passwordHash       String?      @unique
+  avatarUrl          String?
+  comment            Comment[]
+  posts              Post[]
+  profile            UserProfile?
+  verified           Boolean      @default(false)
+  googleID           String?      @unique
+  googleAccessToken  String?      @db.Text
+  code               String?      @unique
+  codeExpirationTime DateTime?
+  provider           String
 
   @@map("users")
 }
