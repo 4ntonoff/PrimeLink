@@ -20,6 +20,8 @@ import {
   useSubmit,
 } from "react-router-dom";
 
+// http://localhost:8080/auth/login
+// http://localhost:8080/auth/register
 function Login(): JSX.Element {
   return (
     <>

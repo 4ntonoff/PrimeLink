@@ -12,7 +12,7 @@ function EmailEnterPage(): JSX.Element {
           Enter a username or an E-mail
         </h1>
         <Input type="text" placeholder="Username or E-mail" />
-        <PrimaryButton onClick={() => console.log("asdf")} text={"Enter"} />
+        <PrimaryButton onClick={() => console.log("najato")} text={"Enter"} />
         <Link
           className="button text-lg border-2 border-zinc-800 hover:bg-zinc-800 text-gray-200 bg-transparent transition-all duration-300 mt-2 rounded-2xl leading-[50px] h-14"
           to={"/login/email-reg"}

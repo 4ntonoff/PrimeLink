@@ -32,15 +32,16 @@ passport.use(new GoogleStrategy({
                     data: {
                         name: profile.displayName,
                         email: profile.emails[0].value,
-                        avatarUrl: profile.picture,
+                        avatarUrl: profile._json.picture,
                         googleAccessToken: accessToken,
                         googleID: profile.id,
                         verified: true,
-                        provider: 'Google'
+                        provider: 'google'
                     }
                 });
             }
 
+            console.log(profile)
             done(null, user);
         } catch (error) {
             console.error("Google OAuth error:", error);

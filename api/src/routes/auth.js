@@ -8,8 +8,6 @@ const registerController = require("../controllers/auth/register.js");
 const verifyCode = require('../controllers/auth/verify-code.js');
 const checkAuth = require('../middlewares/utils/checkAuth.js');
 const setPassword = require('../controllers/auth/set-password.js');
-const jwt = require('jsonwebtoken')
-const {SECRET_KEY_JWT} = process.env
 require('dotenv').config()
 // const { sendOTP, verifyOTP } = require('../controllers/sms.js');
 

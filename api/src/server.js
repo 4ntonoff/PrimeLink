@@ -1,21 +1,26 @@
-require('dotenv').config();
+require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
-const session = require('express-session')
-const cookieParser = require('cookie-parser')
-const passport = require('passport')
-require('./helpers/passport.js')
+const session = require("express-session");
+const cookieParser = require("cookie-parser");
+const passport = require("passport");
+require("./helpers/passport.js");
+const helmet = require("helmet");
 // Routes
-const authRouter = require('./routes/auth.js')
+const authRouter = require("./routes/auth.js");
 
-const port = process.env.PORT
+const port = process.env.PORT;
 
-const app = express()
+const app = express();
 
-
-app.use(express.json())
-app.use(cors())
-app.use(cookieParser())
+app.use(cors());
+app.use(
+  helmet({
+    contentSecurityPolicy: false,
+  }),
+);
+app.use(cookieParser());
+app.use(express.json()); 
 app.use(
   session({
     secret: process.env.SESSION_KEY,
@@ -23,18 +28,17 @@ app.use(
     saveUninitialized: true,
     cookie: {
       sameSite: "none", //allow cross-site requests from different origin
-      maxAge: 1000 * 60 * 24 * 7 // one week
-    }
-  })
-)
-app.use(passport.initialize())
-app.use(passport.session())
+      maxAge: 1000 * 60 * 24 * 7, // one week
+    },
+  }),
+);
+app.use(passport.initialize());
+app.use(passport.session());
 
-app.use('/auth', authRouter)
-app.get('/main', (req, res) => {
-  res.send('Dobro pojalovati')
-})
-
+app.use("/auth", authRouter);
+app.get("/main", (req, res) => {
+  res.send("Dobro pojalovati");
+});
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
